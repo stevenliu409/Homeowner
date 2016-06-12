@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  BNRItemsViewController.h
 //  HomePwner
 //
 //  Created by Steven Liu on 2016-06-11.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface BNRItemsViewController : UITableViewController
 
 
 @end
-
