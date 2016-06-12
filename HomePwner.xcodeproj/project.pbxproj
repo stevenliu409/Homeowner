@@ -15,6 +15,7 @@
 		26BA9FDB1D0D32F700CB51D4 /* HomePwnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA9FDA1D0D32F700CB51D4 /* HomePwnerTests.m */; };
 		26BA9FE71D0D35E300CB51D4 /* BNRItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA9FE61D0D35E300CB51D4 /* BNRItemsViewController.m */; };
 		26BA9FEA1D0D3A9A00CB51D4 /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA9FE91D0D3A9A00CB51D4 /* BNRItem.m */; };
+		26BA9FED1D0D3BCC00CB51D4 /* BNRItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA9FEC1D0D3BCC00CB51D4 /* BNRItemStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		26BA9FE61D0D35E300CB51D4 /* BNRItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemsViewController.m; sourceTree = "<group>"; };
 		26BA9FE81D0D3A9A00CB51D4 /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
 		26BA9FE91D0D3A9A00CB51D4 /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
+		26BA9FEB1D0D3BCC00CB51D4 /* BNRItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemStore.h; sourceTree = "<group>"; };
+		26BA9FEC1D0D3BCC00CB51D4 /* BNRItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,8 @@
 				26BA9FC41D0D32F700CB51D4 /* AppDelegate.m */,
 				26BA9FE81D0D3A9A00CB51D4 /* BNRItem.h */,
 				26BA9FE91D0D3A9A00CB51D4 /* BNRItem.m */,
+				26BA9FEB1D0D3BCC00CB51D4 /* BNRItemStore.h */,
+				26BA9FEC1D0D3BCC00CB51D4 /* BNRItemStore.m */,
 				26BA9FE51D0D35E300CB51D4 /* BNRItemsViewController.h */,
 				26BA9FE61D0D35E300CB51D4 /* BNRItemsViewController.m */,
 				26BA9FC91D0D32F700CB51D4 /* Main.storyboard */,
@@ -216,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26BA9FED1D0D3BCC00CB51D4 /* BNRItemStore.m in Sources */,
 				26BA9FC51D0D32F700CB51D4 /* AppDelegate.m in Sources */,
 				26BA9FEA1D0D3A9A00CB51D4 /* BNRItem.m in Sources */,
 				26BA9FE71D0D35E300CB51D4 /* BNRItemsViewController.m in Sources */,
