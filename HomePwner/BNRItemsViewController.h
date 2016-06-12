@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BNRItemsViewController : UITableViewController
+@interface BNRItemsViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 
 
 @end
