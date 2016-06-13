@@ -51,7 +51,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
     
-    NSMutableArray *arr = self.filterArray[indexPath.section][@"array"];
+    NSMutableArray *arr = self.filterArray[indexPath.section];
     
     NSSortDescriptor *sortDesc = [[NSSortDescriptor alloc] initWithKey:@"valueInDollars" ascending:YES];
     
@@ -75,7 +75,7 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return [self.filterArray[section][@"array"] count] + 1;
+    return [self.filterArray[section] count] + 1;
 }
 
 - (NSMutableArray *)filterArray:(NSArray *)array withAmount:(int)amount
@@ -92,24 +92,19 @@
         }
     }
     
-    NSDictionary *dic;
-    
-    dic = [NSDictionary dictionaryWithObjectsAndKeys:greaterThanAmount, @"array",
-           @"Greater than 50", @"title", nil];
-    
-    [wrapperArray addObject:dic];
-    
-    dic = [NSDictionary dictionaryWithObjectsAndKeys:lessThanAmount, @"array",
-           @"Less than 50", @"title", nil];
-    
-    [wrapperArray addObject:dic];
+    [wrapperArray addObject:greaterThanAmount];
+    [wrapperArray addObject:lessThanAmount];
     
     return wrapperArray;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return self.filterArray[section][@"title"];
+    if (section == 0) {
+        return  @"Greater than 50";
+    } else {
+        return @"Less than 50";
+    }
 }
 
 
