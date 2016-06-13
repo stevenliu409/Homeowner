@@ -59,8 +59,14 @@
     
     if (indexPath.row < [arr count]) {
         cell.textLabel.text = [arr[indexPath.row] description];
+        
+        tableView.rowHeight = 60;
+        cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"hypno"]];
+        
     } else {
         cell.textLabel.text = @"No More Items";
+        tableView.rowHeight = 44;
     }
     
     return cell;
@@ -106,6 +112,8 @@
         return @"Less than 50";
     }
 }
+
+
 
 
 @end
