@@ -19,11 +19,11 @@
 
 + (instancetype)sharedStore
 {
-    static BNRItemStore *sharedStore;
-    
-    if(!sharedStore) {
+    static BNRItemStore *sharedStore = nil; 
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         sharedStore = [[BNRItemStore alloc] initPrivate];
-    }
+    });
     return sharedStore;
 }
 
