@@ -57,7 +57,11 @@
     
     [arr sortUsingDescriptors:@[sortDesc]];
     
-    cell.textLabel.text = [arr[indexPath.row] description];
+    if (indexPath.row < [arr count]) {
+        cell.textLabel.text = [arr[indexPath.row] description];
+    } else {
+        cell.textLabel.text = @"No More Items";
+    }
     
     return cell;
     
@@ -71,7 +75,7 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return [self.filterArray[section][@"array"] count];
+    return [self.filterArray[section][@"array"] count] + 1;
 }
 
 - (NSMutableArray *)filterArray:(NSArray *)array withAmount:(int)amount
