@@ -9,6 +9,11 @@
 #import "BNRItemsViewController.h"
 #import "BNRItem.h"
 #import "BNRItemStore.h"
+@interface BNRItemsViewController()
+
+@property (nonatomic, strong) IBOutlet UIView *headerView;
+
+@end
 
 @implementation BNRItemsViewController
 
@@ -37,6 +42,9 @@
     [self.tableView registerClass:[UITableViewCell class]
            forCellReuseIdentifier:@"UITableViewCell"];
     
+    UIView *header = self.headerView;
+    [self.tableView setTableHeaderView:header];
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -58,5 +66,26 @@
     return [[[BNRItemStore sharedStore] allItems] count];
 }
 
+
+
+- (IBAction)addNewItem:(id)sender
+{
+    NSLog(@"add new item tapped");
+}
+
+
+-(IBAction)toggleEditingMode:(id)sender
+{
+    NSLog(@"edit mode tapped");
+}
+
+- (UIView *)headerView
+{
+    if(!_headerView) {
+        [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
+    }
+    
+    return  _headerView;
+}
 
 @end
