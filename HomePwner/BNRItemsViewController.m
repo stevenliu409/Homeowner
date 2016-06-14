@@ -77,6 +77,13 @@
 -(IBAction)toggleEditingMode:(id)sender
 {
     NSLog(@"edit mode tapped");
+    if ((self.isEditing)) {
+        [self setEditing:NO animated:YES];
+        [sender setTitle:@"Edit" forState:UIControlStateNormal];
+    } else {
+        [self setEditing:YES animated:YES];
+        [sender setTitle:@"Done" forState:UIControlStateNormal];
+    }
 }
 
 - (UIView *)headerView
