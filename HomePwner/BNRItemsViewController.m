@@ -20,12 +20,7 @@
 //Designated init method
 - (instancetype)init
 {
-    if(self = [super initWithStyle:UITableViewStylePlain]) {
-        for (int i = 0; i<5; i++){
-            [[BNRItemStore sharedStore] createItem];
-        }
-    }
-    
+    self = [super initWithStyle:UITableViewStylePlain];
     return self;
 }
 
@@ -70,13 +65,22 @@
 
 - (IBAction)addNewItem:(id)sender
 {
-    NSLog(@"add new item tapped");
+    //Create new item and add it to the data store
+    BNRItem *newItem = [[BNRItemStore sharedStore] createItem];
+    
+    //Find the index of last object and make a indexPath to that position
+    NSInteger lastRow = [[[BNRItemStore sharedStore] allItems] indexOfObject:newItem];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+    
+    //Insert this new row into the table
+    [self.tableView insertRowsAtIndexPaths:@[indexPath]
+                          withRowAnimation:UITableViewRowAnimationTop];
+    
 }
 
 
 -(IBAction)toggleEditingMode:(id)sender
 {
-    NSLog(@"edit mode tapped");
     if ((self.isEditing)) {
         [self setEditing:NO animated:YES];
         [sender setTitle:@"Edit" forState:UIControlStateNormal];

@@ -48,12 +48,18 @@
     return [self.privateItems copy];
 }
 
--(BNRItem *)createItem
+- (BNRItem *)createItem
 {
     BNRItem *item = [BNRItem randomItem];
     
     [self.privateItems addObject:item];
     return item;
 }
+
+- (void)removeItem:(BNRItem *)item
+{
+    [self.privateItems removeObjectIdenticalTo:item];
+}
+
 
 @end
