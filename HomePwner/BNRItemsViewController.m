@@ -61,6 +61,7 @@
         cell.textLabel.text = [arr[indexPath.row] description];
         tableView.rowHeight = 60;
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
+        cell.imageView.image = [UIImage imageNamed:@"Icon"];
     } else {
         cell.textLabel.text = @"No More Items";
         tableView.rowHeight = 44;
