@@ -49,7 +49,11 @@
     
     NSArray *itemArray = [[BNRItemStore sharedStore] allItems];
     
-    cell.textLabel.text = [[itemArray objectAtIndex:indexPath.row] description];
+    if (indexPath.row < [itemArray count]) {
+        cell.textLabel.text = [[itemArray objectAtIndex:indexPath.row] description];
+    } else {
+        cell.textLabel.text = @"No more Items";
+    }
     
     return cell;
     
@@ -58,7 +62,7 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return [[[BNRItemStore sharedStore] allItems] count];
+    return [[[BNRItemStore sharedStore] allItems] count] + 1;
 }
 
 
@@ -99,6 +103,22 @@
     return  _headerView;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return (indexPath.row == [tableView numberOfRowsInSection:0]-1) ? NO : YES;
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView
+targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+       toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
+    if (proposedDestinationIndexPath.row == [tableView numberOfRowsInSection:0] - 1) {
+        return sourceIndexPath;
+    }
+    
+    return proposedDestinationIndexPath;
+}
+
 - (void)tableView:(UITableView *)tableView
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(nonnull NSIndexPath *)indexPath
@@ -111,7 +131,6 @@ forRowAtIndexPath:(nonnull NSIndexPath *)indexPath
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
-
 
 - (void)tableView:(UITableView *)tableView
 moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
