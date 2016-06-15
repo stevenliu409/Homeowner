@@ -23,6 +23,10 @@
 - (instancetype)init
 {
     self = [super initWithStyle:UITableViewStylePlain];
+    if(self) {
+        
+        self.navigationItem.title = @"Homepwner";
+    }
     return self;
 }
 
@@ -31,6 +35,12 @@
     return [self init];
 }
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
 
 - (void)viewDidLoad
 {
