@@ -19,6 +19,17 @@
 
 @implementation BNRDetailsViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] init];
+    [tap addTarget:self action:@selector(dismissMyKeyboard)];
+ 
+    [self.view addGestureRecognizer:tap];
+}
+
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -45,7 +56,7 @@
 {
     [super viewWillDisappear:animated];
     
-    [self.view endEditing:YES];
+    [self dismissMyKeyboard];
     
     BNRItem *item = self.item;
     item.itemName = self.nameField.text;
@@ -60,6 +71,11 @@
     _item = item;
     self.navigationItem.title = _item.itemName;
     
+}
+
+- (void)dismissMyKeyboard
+{
+    [self.view endEditing:YES];
 }
 
 @end
