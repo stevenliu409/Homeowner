@@ -13,8 +13,6 @@
 
 @interface BNRItemsViewController()
 
-@property (nonatomic, strong) IBOutlet UIView *headerView;
-
 @end
 
 @implementation BNRItemsViewController
@@ -90,26 +88,6 @@
     
 }
 
-
--(IBAction)toggleEditingMode:(id)sender
-{
-    if ((self.isEditing)) {
-        [self setEditing:NO animated:YES];
-        [sender setTitle:@"Edit" forState:UIControlStateNormal];
-    } else {
-        [self setEditing:YES animated:YES];
-        [sender setTitle:@"Done" forState:UIControlStateNormal];
-    }
-}
-
-- (UIView *)headerView
-{
-    if(!_headerView) {
-        [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
-    }
-    
-    return  _headerView;
-}
 
 - (void)tableView:(UITableView *)tableView
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle

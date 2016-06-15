@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2690D7861D10E2EA00CEA320 /* BNRDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2690D7851D10E2EA00CEA320 /* BNRDetailsViewController.m */; };
 		2690D7881D10F7D500CEA320 /* BNRDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2690D7871D10F7D500CEA320 /* BNRDetailsViewController.xib */; };
-		26A68F9D1D10B60700D48454 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A68F9C1D10B60700D48454 /* HeaderView.xib */; };
 		26BA9FC21D0D32F700CB51D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA9FC11D0D32F700CB51D4 /* main.m */; };
 		26BA9FC51D0D32F700CB51D4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA9FC41D0D32F700CB51D4 /* AppDelegate.m */; };
 		26BA9FCB1D0D32F700CB51D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26BA9FC91D0D32F700CB51D4 /* Main.storyboard */; };
@@ -35,7 +34,6 @@
 		2690D7841D10E2EA00CEA320 /* BNRDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRDetailsViewController.h; sourceTree = "<group>"; };
 		2690D7851D10E2EA00CEA320 /* BNRDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRDetailsViewController.m; sourceTree = "<group>"; };
 		2690D7871D10F7D500CEA320 /* BNRDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRDetailsViewController.xib; sourceTree = "<group>"; };
-		26A68F9C1D10B60700D48454 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		26BA9FBD1D0D32F700CB51D4 /* HomePwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomePwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BA9FC11D0D32F700CB51D4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		26BA9FC31D0D32F700CB51D4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 				26BA9FEC1D0D3BCC00CB51D4 /* BNRItemStore.m */,
 				26BA9FE51D0D35E300CB51D4 /* BNRItemsViewController.h */,
 				26BA9FE61D0D35E300CB51D4 /* BNRItemsViewController.m */,
-				26A68F9C1D10B60700D48454 /* HeaderView.xib */,
 				26BA9FC91D0D32F700CB51D4 /* Main.storyboard */,
 				26BA9FCC1D0D32F700CB51D4 /* Assets.xcassets */,
 				26BA9FCE1D0D32F700CB51D4 /* LaunchScreen.storyboard */,
@@ -215,7 +212,6 @@
 				26BA9FD01D0D32F700CB51D4 /* LaunchScreen.storyboard in Resources */,
 				26BA9FCD1D0D32F700CB51D4 /* Assets.xcassets in Resources */,
 				26BA9FCB1D0D32F700CB51D4 /* Main.storyboard in Resources */,
-				26A68F9D1D10B60700D48454 /* HeaderView.xib in Resources */,
 				2690D7881D10F7D500CEA320 /* BNRDetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
