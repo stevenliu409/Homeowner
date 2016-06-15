@@ -79,7 +79,6 @@
     //Insert this new row into the table
     [self.tableView insertRowsAtIndexPaths:@[indexPath]
                           withRowAnimation:UITableViewRowAnimationTop];
-    
 }
 
 
