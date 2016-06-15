@@ -9,6 +9,8 @@
 #import "BNRItemsViewController.h"
 #import "BNRItem.h"
 #import "BNRItemStore.h"
+#import "BNRDetailsViewController.h"
+
 @interface BNRItemsViewController()
 
 @property (nonatomic, strong) IBOutlet UIView *headerView;
@@ -121,5 +123,14 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
 }
 
 
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BNRDetailsViewController *detailsVC = [[BNRDetailsViewController alloc] init];
+    NSArray *itemsArray = [[BNRItemStore sharedStore] allItems];
+    BNRItem *selectedItem = itemsArray[indexPath.row];
+    detailsVC.item = selectedItem;
+    [self.navigationController pushViewController:detailsVC animated:YES];
+}
 
 @end

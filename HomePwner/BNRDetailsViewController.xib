@@ -11,6 +11,7 @@
                 <outlet property="nameField" destination="8hf-Hh-eUp" id="nln-s7-ew7"/>
                 <outlet property="serialNumberField" destination="KhI-YR-nek" id="Cvh-9p-nmq"/>
                 <outlet property="valueField" destination="tXF-kK-T9o" id="NTN-X3-jyB"/>
+                <outlet property="view" destination="7pR-pZ-jnS" id="geg-gj-M7J"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -18,11 +19,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AsO-T8-gQs">
-                    <rect key="frame" x="40" y="80" width="334" height="141"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="AsO-T8-gQs">
+                    <rect key="frame" x="30" y="80" width="354" height="159"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RsU-3x-wtp">
-                            <rect key="frame" x="0.0" y="0.0" width="334" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="354" height="30"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmW-eg-kx9">
                                     <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
@@ -31,7 +32,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8hf-Hh-eUp">
-                                    <rect key="frame" x="65" y="0.0" width="269" height="30"/>
+                                    <rect key="frame" x="65" y="0.0" width="289" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
@@ -41,7 +42,7 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wjh-5k-bmD">
-                            <rect key="frame" x="0.0" y="40" width="334" height="30"/>
+                            <rect key="frame" x="0.0" y="43" width="354" height="30"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7B-j1-JgB">
                                     <rect key="frame" x="0.0" y="0.0" width="43" height="30"/>
@@ -50,7 +51,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KhI-YR-nek">
-                                    <rect key="frame" x="63" y="0.0" width="271" height="30"/>
+                                    <rect key="frame" x="63" y="0.0" width="291" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
@@ -60,7 +61,7 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Xns-WS-cdm">
-                            <rect key="frame" x="0.0" y="80" width="334" height="30"/>
+                            <rect key="frame" x="0.0" y="86" width="354" height="30"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNq-23-N91">
                                     <rect key="frame" x="0.0" y="0.0" width="42" height="30"/>
@@ -69,7 +70,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tXF-kK-T9o">
-                                    <rect key="frame" x="62" y="0.0" width="272" height="30"/>
+                                    <rect key="frame" x="62" y="0.0" width="292" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
@@ -79,7 +80,7 @@
                             </subviews>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9g-ej-f08">
-                            <rect key="frame" x="0.0" y="120" width="334" height="21"/>
+                            <rect key="frame" x="0.0" y="129" width="354" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
@@ -99,9 +100,9 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="AsO-T8-gQs" secondAttribute="trailing" constant="40" id="DQB-NS-heI" userLabel="trailing = Stack View.trailing + 40"/>
-                <constraint firstItem="AsO-T8-gQs" firstAttribute="leading" secondItem="7pR-pZ-jnS" secondAttribute="leading" constant="40" id="qdV-Aj-G04"/>
-                <constraint firstItem="AsO-T8-gQs" firstAttribute="top" secondItem="7pR-pZ-jnS" secondAttribute="top" constant="80" id="zeO-Jz-pQU"/>
+                <constraint firstAttribute="trailing" secondItem="AsO-T8-gQs" secondAttribute="trailing" constant="30" id="j9T-T4-9qT"/>
+                <constraint firstItem="AsO-T8-gQs" firstAttribute="top" secondItem="7pR-pZ-jnS" secondAttribute="top" constant="80" id="tXV-In-lwZ"/>
+                <constraint firstItem="AsO-T8-gQs" firstAttribute="leading" secondItem="7pR-pZ-jnS" secondAttribute="leading" constant="30" id="uCf-3I-h7I"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
