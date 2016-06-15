@@ -26,6 +26,9 @@
     if(self) {
         
         self.navigationItem.title = @"Homepwner";
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewItem:)];
+        self.navigationItem.rightBarButtonItem = bbi;
+        self.navigationItem.leftBarButtonItem = self.editButtonItem;
     }
     return self;
 }
@@ -48,9 +51,6 @@
     
     [self.tableView registerClass:[UITableViewCell class]
            forCellReuseIdentifier:@"UITableViewCell"];
-    
-    UIView *header = self.headerView;
-    [self.tableView setTableHeaderView:header];
     
 }
 
