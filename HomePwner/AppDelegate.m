@@ -19,8 +19,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    
     BNRItemsViewController *itemVC = [[BNRItemsViewController alloc] init];
-    [self.window setRootViewController:itemVC];
+    UINavigationController *navVc = [[UINavigationController alloc] initWithRootViewController:itemVC];
+    [self.window setRootViewController:navVc];
     
     return YES;
 }
