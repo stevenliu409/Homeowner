@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="AsO-T8-gQs">
-                    <rect key="frame" x="30" y="80" width="354" height="159"/>
+                    <rect key="frame" x="30" y="80" width="354" height="202"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RsU-3x-wtp">
                             <rect key="frame" x="0.0" y="0.0" width="354" height="30"/>
@@ -85,13 +85,22 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PB2-Xn-mwh">
+                            <rect key="frame" x="0.0" y="172" width="354" height="30"/>
+                            <state key="normal" title="Change Date"/>
+                            <connections>
+                                <action selector="changeDate:" destination="-1" eventType="touchUpInside" id="TWa-DL-9Mn"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="Xns-WS-cdm" firstAttribute="leading" secondItem="AsO-T8-gQs" secondAttribute="leading" id="1Pu-Gn-tSm"/>
                         <constraint firstItem="b9g-ej-f08" firstAttribute="leading" secondItem="AsO-T8-gQs" secondAttribute="leading" id="4IF-Ek-87V"/>
                         <constraint firstAttribute="trailing" secondItem="b9g-ej-f08" secondAttribute="trailing" id="NlR-cg-u9k"/>
                         <constraint firstAttribute="trailing" secondItem="RsU-3x-wtp" secondAttribute="trailing" id="Sbu-UU-9Nh"/>
+                        <constraint firstAttribute="trailing" secondItem="PB2-Xn-mwh" secondAttribute="trailing" id="VWj-pe-PGX"/>
                         <constraint firstAttribute="trailing" secondItem="wjh-5k-bmD" secondAttribute="trailing" id="Xc6-j0-EZP"/>
+                        <constraint firstItem="PB2-Xn-mwh" firstAttribute="leading" secondItem="AsO-T8-gQs" secondAttribute="leading" id="ZiY-W6-BW0"/>
                         <constraint firstItem="wjh-5k-bmD" firstAttribute="leading" secondItem="AsO-T8-gQs" secondAttribute="leading" id="dc4-7C-pfx"/>
                         <constraint firstItem="RsU-3x-wtp" firstAttribute="leading" secondItem="AsO-T8-gQs" secondAttribute="leading" id="mMN-By-3eZ"/>
                         <constraint firstAttribute="trailing" secondItem="Xns-WS-cdm" secondAttribute="trailing" id="syt-PX-vkx"/>

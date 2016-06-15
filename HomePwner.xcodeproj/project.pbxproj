@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2690D7861D10E2EA00CEA320 /* BNRDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2690D7851D10E2EA00CEA320 /* BNRDetailsViewController.m */; };
 		2690D7881D10F7D500CEA320 /* BNRDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2690D7871D10F7D500CEA320 /* BNRDetailsViewController.xib */; };
+		2690D78C1D1126BB00CEA320 /* BNRDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2690D78A1D1126BB00CEA320 /* BNRDatePickerViewController.m */; };
+		2690D78D1D1126BB00CEA320 /* BNRDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2690D78B1D1126BB00CEA320 /* BNRDatePickerViewController.xib */; };
 		26BA9FC21D0D32F700CB51D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA9FC11D0D32F700CB51D4 /* main.m */; };
 		26BA9FC51D0D32F700CB51D4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA9FC41D0D32F700CB51D4 /* AppDelegate.m */; };
 		26BA9FCB1D0D32F700CB51D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26BA9FC91D0D32F700CB51D4 /* Main.storyboard */; };
@@ -34,6 +36,9 @@
 		2690D7841D10E2EA00CEA320 /* BNRDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRDetailsViewController.h; sourceTree = "<group>"; };
 		2690D7851D10E2EA00CEA320 /* BNRDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRDetailsViewController.m; sourceTree = "<group>"; };
 		2690D7871D10F7D500CEA320 /* BNRDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRDetailsViewController.xib; sourceTree = "<group>"; };
+		2690D7891D1126BB00CEA320 /* BNRDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRDatePickerViewController.h; sourceTree = "<group>"; };
+		2690D78A1D1126BB00CEA320 /* BNRDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRDatePickerViewController.m; sourceTree = "<group>"; };
+		2690D78B1D1126BB00CEA320 /* BNRDatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRDatePickerViewController.xib; sourceTree = "<group>"; };
 		26BA9FBD1D0D32F700CB51D4 /* HomePwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomePwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BA9FC11D0D32F700CB51D4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		26BA9FC31D0D32F700CB51D4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -97,6 +102,9 @@
 				2690D7841D10E2EA00CEA320 /* BNRDetailsViewController.h */,
 				2690D7851D10E2EA00CEA320 /* BNRDetailsViewController.m */,
 				2690D7871D10F7D500CEA320 /* BNRDetailsViewController.xib */,
+				2690D7891D1126BB00CEA320 /* BNRDatePickerViewController.h */,
+				2690D78A1D1126BB00CEA320 /* BNRDatePickerViewController.m */,
+				2690D78B1D1126BB00CEA320 /* BNRDatePickerViewController.xib */,
 				26BA9FE81D0D3A9A00CB51D4 /* BNRItem.h */,
 				26BA9FE91D0D3A9A00CB51D4 /* BNRItem.m */,
 				26BA9FEB1D0D3BCC00CB51D4 /* BNRItemStore.h */,
@@ -210,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26BA9FD01D0D32F700CB51D4 /* LaunchScreen.storyboard in Resources */,
+				2690D78D1D1126BB00CEA320 /* BNRDatePickerViewController.xib in Resources */,
 				26BA9FCD1D0D32F700CB51D4 /* Assets.xcassets in Resources */,
 				26BA9FCB1D0D32F700CB51D4 /* Main.storyboard in Resources */,
 				2690D7881D10F7D500CEA320 /* BNRDetailsViewController.xib in Resources */,
@@ -230,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2690D78C1D1126BB00CEA320 /* BNRDatePickerViewController.m in Sources */,
 				26BA9FED1D0D3BCC00CB51D4 /* BNRItemStore.m in Sources */,
 				26BA9FC51D0D32F700CB51D4 /* AppDelegate.m in Sources */,
 				2690D7861D10E2EA00CEA320 /* BNRDetailsViewController.m in Sources */,

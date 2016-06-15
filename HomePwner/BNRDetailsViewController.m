@@ -8,6 +8,7 @@
 
 #import "BNRDetailsViewController.h"
 #import "BNRItem.h"
+#import "BNRDatePickerViewController.h"
 
 @interface BNRDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -76,6 +77,15 @@
 - (void)dismissMyKeyboard
 {
     [self.view endEditing:YES];
+}
+
+
+- (IBAction)changeDate:(id)sender
+{
+ 
+    BNRDatePickerViewController *dateVC = [[BNRDatePickerViewController alloc] init];
+    dateVC.item = self.item;
+    [self.navigationController pushViewController:dateVC animated:YES];
 }
 
 @end
