@@ -10,7 +10,7 @@
 #import "BNRImageStore.h"
 #import "BNRItem.h"
 
-@interface BNRDetailsViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface BNRDetailsViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *serialNumberField;
@@ -42,6 +42,7 @@
     }
     
     self.dateLabel.text =[dateFormatter stringFromDate:item.dateCreated];
+    self.imageView.image = [[BNRImageStore sharedStore] imageForKey:item.itemKey];
 }
 
 
@@ -85,6 +86,17 @@
     [[BNRImageStore sharedStore] setImage:self.imageView.image forKey:self.item.itemKey];
     [self dismissViewControllerAnimated:YES completion:nil];
     
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (IBAction)backgroundTapped:(id)sender
+{
+    [self.view endEditing:YES];
 }
 
 @end
