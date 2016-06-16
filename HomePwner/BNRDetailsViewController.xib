@@ -110,6 +110,12 @@
                                 <action selector="takePicture:" destination="-1" id="WbB-Jy-dq5"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="F2Q-h5-a6x"/>
+                        <barButtonItem title="Clear" id="XJz-pc-1zi">
+                            <connections>
+                                <action selector="clearImage:" destination="-1" id="mLJ-Zs-EQ8"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
             </subviews>
