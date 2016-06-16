@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 
+@property (strong, nonatomic) UIView *crossHairOverlay;
 @end
 
 @implementation BNRDetailsViewController
@@ -43,6 +44,10 @@
     
     self.dateLabel.text =[dateFormatter stringFromDate:item.dateCreated];
     self.imageView.image = [[BNRImageStore sharedStore] imageForKey:item.itemKey];
+    
+    // Need to hide the crosshairs when user finish taking the photo or else app will crash
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideCrossHairsView:) name:@"_UIImagePickerControllerUserDidCaptureItem" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideCrossHairsView:) name:@"_UIImagePickerControllerUserDidRejectItem" object:nil];
 }
 
 
@@ -57,7 +62,12 @@
     item.serialNumber = self.serialNumberField.text;
     item.valueInDollars = [self.valueField.text intValue];
     
-    
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"_UIImagePickerControllerUserDidCaptureItem" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"_UIImagePickerControllerUserDidRejectItem" object:nil];
 }
 
 - (void)setItem:(BNRItem *)item
@@ -67,10 +77,12 @@
     
 }
 - (IBAction)takePicture:(id)sender {
-    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        self.crossHairOverlay = [self createCameraOverlay];
+        [imagePicker setCameraOverlayView:self.crossHairOverlay];
     } else {
         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
@@ -104,8 +116,51 @@
 {
     self.imageView.image = nil;
     [[BNRImageStore sharedStore] deleteImageForKey:self.item.itemKey];
-    
 }
 
+
+- (UIView *)createCameraOverlay
+{
+    
+    CGPoint center;
+    center.x = self.view.bounds.origin.x + self.view.bounds.size.width/2.0;
+    center.y = self.view.bounds.origin.y + self.view.bounds.size.height/2.0;
+    
+    // navbar height = 40px
+    UIView *crossHairView = [[UIView alloc] initWithFrame:CGRectMake(center.x-15, center.y-55, 30, 30)];
+    crossHairView.opaque = NO;
+    crossHairView.backgroundColor = [UIColor clearColor];
+    
+    CAShapeLayer *crossHairLayer = [[CAShapeLayer alloc] init];
+    crossHairLayer.strokeColor = [UIColor redColor].CGColor;
+    
+    UIBezierPath *line = [UIBezierPath bezierPath];
+
+    CGPoint p1 = CGPointMake(0,15);
+    CGPoint p2 = CGPointMake(30, 15);
+    CGPoint p3 = CGPointMake(15, 0);
+    CGPoint p4 = CGPointMake(15, 30);
+    [line moveToPoint:p1];
+    [line addLineToPoint:p2];
+    [line closePath];
+    [line moveToPoint:p3];
+    [line addLineToPoint:p4];
+    [line closePath];
+    
+    [crossHairLayer setPath:line.CGPath];
+    [[crossHairView layer] addSublayer:crossHairLayer];
+
+    return crossHairView;
+}
+
+
+- (void)hideCrossHairsView:(NSNotification *)message
+{
+    if ([message.name isEqualToString:@"_UIImagePickerControllerUserDidCaptureItem"]) {
+        self.crossHairOverlay.hidden = YES;
+    } else {
+        self.crossHairOverlay.hidden = NO;
+    }
+}
 
 @end
