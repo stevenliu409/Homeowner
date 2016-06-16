@@ -7,6 +7,7 @@
 //
 
 #import "BNRDetailsViewController.h"
+#import "BNRImageStore.h"
 #import "BNRItem.h"
 
 @interface BNRDetailsViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
@@ -81,6 +82,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     self.imageView.image = info[UIImagePickerControllerOriginalImage];
+    [[BNRImageStore sharedStore] setImage:self.imageView.image forKey:self.item.itemKey];
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
