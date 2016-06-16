@@ -76,13 +76,14 @@
     }
     
     imagePicker.delegate = self;
+    imagePicker.allowsEditing = YES;
     
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
-    self.imageView.image = info[UIImagePickerControllerOriginalImage];
+    self.imageView.image = info[UIImagePickerControllerEditedImage];
     [[BNRImageStore sharedStore] setImage:self.imageView.image forKey:self.item.itemKey];
     [self dismissViewControllerAnimated:YES completion:nil];
     
