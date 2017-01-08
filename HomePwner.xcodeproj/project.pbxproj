@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26632E521E22DC24009001AF /* UINavigationController+deviceOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26632E511E22DC24009001AF /* UINavigationController+deviceOrientation.m */; };
 		2690D7861D10E2EA00CEA320 /* BNRDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2690D7851D10E2EA00CEA320 /* BNRDetailsViewController.m */; };
 		2690D7881D10F7D500CEA320 /* BNRDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2690D7871D10F7D500CEA320 /* BNRDetailsViewController.xib */; };
 		26BA9FC21D0D32F700CB51D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA9FC11D0D32F700CB51D4 /* main.m */; };
@@ -32,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		26632E501E22DC24009001AF /* UINavigationController+deviceOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+deviceOrientation.h"; sourceTree = "<group>"; };
+		26632E511E22DC24009001AF /* UINavigationController+deviceOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+deviceOrientation.m"; sourceTree = "<group>"; };
 		2690D7841D10E2EA00CEA320 /* BNRDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRDetailsViewController.h; sourceTree = "<group>"; };
 		2690D7851D10E2EA00CEA320 /* BNRDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRDetailsViewController.m; sourceTree = "<group>"; };
 		2690D7871D10F7D500CEA320 /* BNRDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRDetailsViewController.xib; sourceTree = "<group>"; };
@@ -113,6 +116,8 @@
 				26BA9FC01D0D32F700CB51D4 /* Supporting Files */,
 				26EF954F1D120FE90035BF97 /* BNRImageStore.h */,
 				26EF95501D120FE90035BF97 /* BNRImageStore.m */,
+				26632E501E22DC24009001AF /* UINavigationController+deviceOrientation.h */,
+				26632E511E22DC24009001AF /* UINavigationController+deviceOrientation.m */,
 			);
 			path = HomePwner;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 				2690D7861D10E2EA00CEA320 /* BNRDetailsViewController.m in Sources */,
 				26BA9FEA1D0D3A9A00CB51D4 /* BNRItem.m in Sources */,
 				26BA9FE71D0D35E300CB51D4 /* BNRItemsViewController.m in Sources */,
+				26632E521E22DC24009001AF /* UINavigationController+deviceOrientation.m in Sources */,
 				26BA9FC21D0D32F700CB51D4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
