@@ -375,7 +375,7 @@
 				DEVELOPMENT_TEAM = 5LG9RH56Q2;
 				INFOPLIST_FILE = HomePwner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.HomePwner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stevenliu.HomePwner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -388,7 +388,7 @@
 				DEVELOPMENT_TEAM = 5LG9RH56Q2;
 				INFOPLIST_FILE = HomePwner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.HomePwner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stevenliu.HomePwner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
