@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 
 @end
 
@@ -59,6 +60,9 @@
 {
     [super viewWillAppear:animated];
     
+    UIInterfaceOrientation io = [[UIApplication sharedApplication] statusBarOrientation];
+    [self prepareViewsForOrientation:io];
+    
     BNRItem *item = self.item;
     
     self.nameField.text = item.itemName;
@@ -88,22 +92,23 @@
     item.itemName = self.nameField.text;
     item.serialNumber = self.serialNumberField.text;
     item.valueInDollars = [self.valueField.text intValue];
-    
-    
 }
 
 - (void)setItem:(BNRItem *)item
 {
     _item = item;
     self.navigationItem.title = _item.itemName;
-    
 }
+
 - (IBAction)takePicture:(id)sender {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
-    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    } else {
+    }
+    else
+    {
         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     
@@ -129,6 +134,60 @@
 - (IBAction)backgroundTapped:(id)sender
 {
     [self.view endEditing:YES];
+}
+
+/*!
+ * @discussion disable the camera button and image view if the iphone is in landscape
+ * @param the current orientation of the device
+ */
+- (void)prepareViewsForOrientation:(UIInterfaceOrientation)orientation
+{
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
+    {
+        return;
+    }
+    
+    if (UIInterfaceOrientationIsLandscape(orientation))
+    {
+        self.imageView.hidden = YES;
+        self.cameraButton.enabled = NO;
+    }
+    else
+    {
+        self.imageView.hidden = NO;
+        self.cameraButton.enabled = YES;
+    }
+}
+
+// Deprecated -- use the new method below
+//- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+//{
+//    [self prepareViewsForOrientation:toInterfaceOrientation];
+//}
+
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    UIInterfaceOrientation toInterfaceOrientation = [self _convertDeviceOrientationToInterfaceOrientation:[[UIDevice currentDevice] orientation]];
+    
+    [self prepareViewsForOrientation:toInterfaceOrientation];
+}
+
+- (UIInterfaceOrientation)_convertDeviceOrientationToInterfaceOrientation:(UIDeviceOrientation)deviceOrientation
+{
+    UIInterfaceOrientation toInterfaceOrientation;
+
+    if (deviceOrientation == UIInterfaceOrientationLandscapeRight)
+    {
+        toInterfaceOrientation = UIInterfaceOrientationLandscapeLeft;
+    }
+    else if (deviceOrientation == UIInterfaceOrientationLandscapeLeft)
+    {
+        toInterfaceOrientation = UIInterfaceOrientationLandscapeRight;
+    }
+
+    return toInterfaceOrientation;
 }
 
 @end
