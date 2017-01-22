@@ -10,8 +10,9 @@
 #import "BNRImageStore.h"
 #import "BNRItem.h"
 
-@interface BNRDetailsViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
+@interface BNRDetailsViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIPopoverPresentationControllerDelegate>
 
+@property (strong, nonatomic) UIPopoverPresentationController *imagePickerPopover;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *serialNumberField;
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
@@ -114,7 +115,20 @@
     
     imagePicker.delegate = self;
     
-    [self presentViewController:imagePicker animated:YES completion:nil];
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
+    {
+        imagePicker.modalPresentationStyle = UIModalPresentationPopover;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+        
+        self.imagePickerPopover = [imagePicker popoverPresentationController];
+        self.imagePickerPopover.permittedArrowDirections = UIPopoverArrowDirectionUp;
+        self.imagePickerPopover.barButtonItem = sender; // need to set the anchor
+        self.imagePickerPopover.delegate = self;
+    }
+    else
+    {
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
@@ -122,7 +136,6 @@
     self.imageView.image = info[UIImagePickerControllerOriginalImage];
     [[BNRImageStore sharedStore] setImage:self.imageView.image forKey:self.item.itemKey];
     [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -159,18 +172,11 @@
     }
 }
 
-// Deprecated -- use the new method below
-//- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-//{
-//    [self prepareViewsForOrientation:toInterfaceOrientation];
-//}
-
-
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    UIInterfaceOrientation toInterfaceOrientation = [self _convertDeviceOrientationToInterfaceOrientation:[[UIDevice currentDevice] orientation]];
     
+    UIInterfaceOrientation toInterfaceOrientation = [self _convertDeviceOrientationToInterfaceOrientation:[[UIDevice currentDevice] orientation]];
     [self prepareViewsForOrientation:toInterfaceOrientation];
 }
 
@@ -189,5 +195,4 @@
 
     return toInterfaceOrientation;
 }
-
 @end
