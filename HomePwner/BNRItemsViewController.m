@@ -78,14 +78,15 @@
     //Create new item and add it to the data store
     BNRItem *newItem = [[BNRItemStore sharedStore] createItem];
     
-    //Find the index of last object and make a indexPath to that position
-    NSInteger lastRow = [[[BNRItemStore sharedStore] allItems] indexOfObject:newItem];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+    BNRDetailsViewController *detailsVC = [[BNRDetailsViewController alloc] initForNewItem:YES];
+    detailsVC.item = newItem;
+    detailsVC.dismissBlock = ^{
+        [self.tableView reloadData];
+    };
     
-    //Insert this new row into the table
-    [self.tableView insertRowsAtIndexPaths:@[indexPath]
-                          withRowAnimation:UITableViewRowAnimationTop];
-    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailsVC];
+    navController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 
@@ -114,10 +115,11 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BNRDetailsViewController *detailsVC = [[BNRDetailsViewController alloc] init];
+    BNRDetailsViewController *detailsVC = [[BNRDetailsViewController alloc] initForNewItem:NO];
     NSArray *itemsArray = [[BNRItemStore sharedStore] allItems];
     BNRItem *selectedItem = itemsArray[indexPath.row];
     detailsVC.item = selectedItem;
+    
     [self.navigationController pushViewController:detailsVC animated:YES];
 }
 
