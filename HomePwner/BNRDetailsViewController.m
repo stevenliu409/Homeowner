@@ -13,7 +13,6 @@
 
 @interface BNRDetailsViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIPopoverPresentationControllerDelegate>
 
-@property (strong, nonatomic) UIPopoverPresentationController *imagePickerPopover;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *serialNumberField;
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
@@ -121,10 +120,10 @@
         imagePicker.modalPresentationStyle = UIModalPresentationPopover;
         [self presentViewController:imagePicker animated:YES completion:nil];
         
-        self.imagePickerPopover = [imagePicker popoverPresentationController];
-        self.imagePickerPopover.permittedArrowDirections = UIPopoverArrowDirectionUp;
-        self.imagePickerPopover.barButtonItem = sender; // need to set the anchor
-        self.imagePickerPopover.delegate = self;
+        UIPopoverPresentationController *imagePickerPopover = [imagePicker popoverPresentationController];
+        imagePickerPopover.permittedArrowDirections = UIPopoverArrowDirectionUp;
+        imagePickerPopover.barButtonItem = sender; // need to set the anchor
+        imagePickerPopover.delegate = self;
     }
     else
     {
