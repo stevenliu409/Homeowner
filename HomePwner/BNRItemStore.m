@@ -11,9 +11,7 @@
 #import "BNRImageStore.h"
 
 @interface BNRItemStore()
-
 @property (nonatomic) NSMutableArray *privateItems;
-
 @end
 
 @implementation BNRItemStore
@@ -37,8 +35,15 @@
 
 - (instancetype) initPrivate
 {
-    if(self = [super init]) {
-        _privateItems = [[NSMutableArray alloc] init];
+    if (self = [super init])
+    {
+        NSString *path = [self itemArchivePath];
+        _privateItems = [NSKeyedUnarchiver unarchiveObjectWithFile:path]; // This will return a NSMutableArray because we archived it as a NSMutableArray
+        
+        if (!_privateItems)
+        {
+            _privateItems = [[NSMutableArray alloc] init];
+        }
     }
     return self;
 }
@@ -51,7 +56,7 @@
 
 - (BNRItem *)createItem
 {
-    BNRItem *item = [BNRItem randomItem];
+    BNRItem *item = [[BNRItem alloc] init];
     
     [self.privateItems addObject:item];
     return item;
@@ -65,13 +70,29 @@
 
 - (void)moveItemAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex
 {
-    if (fromIndex == toIndex) {
+    if (fromIndex == toIndex)
+    {
         return;
     }
     
     BNRItem *item = self.privateItems[fromIndex];
     [self.privateItems removeObjectAtIndex:fromIndex];
     [self.privateItems insertObject:item atIndex:toIndex];
+}
+
+- (NSString *)itemArchivePath
+{
+    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [documentDirectories firstObject];
+    
+    return [documentDirectory stringByAppendingPathComponent:@"items.archive"];
+}
+
+- (BOOL)saveChanges
+{
+    NSString *path = [self itemArchivePath];
+    return [NSKeyedArchiver archiveRootObject:self.privateItems
+                                       toFile:path];
 }
 
 @end
