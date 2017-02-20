@@ -61,7 +61,7 @@
     
     NSString *imagePath = [self imagePathForKey:key];
     
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+    NSData *imageData = UIImagePNGRepresentation(image);
     
     // Images are saved to the file system right away because it takes to long to save an image during the transition to background state
     [imageData writeToFile:imagePath atomically:YES];
