@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		260F1C241E747A9C00133FA9 /* BNRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 260F1C231E747A9C00133FA9 /* BNRImageViewController.m */; };
+		263EF7BC1E73846700E1681C /* BNRItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 263EF7BA1E73846700E1681C /* BNRItemCell.m */; };
+		263EF7BD1E73846700E1681C /* BNRItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263EF7BB1E73846700E1681C /* BNRItemCell.xib */; };
 		2690D7861D10E2EA00CEA320 /* BNRDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2690D7851D10E2EA00CEA320 /* BNRDetailsViewController.m */; };
 		2690D7881D10F7D500CEA320 /* BNRDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2690D7871D10F7D500CEA320 /* BNRDetailsViewController.xib */; };
 		26BA9FC21D0D32F700CB51D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 26BA9FC11D0D32F700CB51D4 /* main.m */; };
@@ -32,6 +35,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		260F1C221E747A9C00133FA9 /* BNRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRImageViewController.h; sourceTree = "<group>"; };
+		260F1C231E747A9C00133FA9 /* BNRImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageViewController.m; sourceTree = "<group>"; };
+		263EF7B91E73846700E1681C /* BNRItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemCell.h; sourceTree = "<group>"; };
+		263EF7BA1E73846700E1681C /* BNRItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemCell.m; sourceTree = "<group>"; };
+		263EF7BB1E73846700E1681C /* BNRItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRItemCell.xib; sourceTree = "<group>"; };
 		2690D7841D10E2EA00CEA320 /* BNRDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRDetailsViewController.h; sourceTree = "<group>"; };
 		2690D7851D10E2EA00CEA320 /* BNRDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRDetailsViewController.m; sourceTree = "<group>"; };
 		2690D7871D10F7D500CEA320 /* BNRDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRDetailsViewController.xib; sourceTree = "<group>"; };
@@ -106,6 +114,11 @@
 				26BA9FEC1D0D3BCC00CB51D4 /* BNRItemStore.m */,
 				26BA9FE51D0D35E300CB51D4 /* BNRItemsViewController.h */,
 				26BA9FE61D0D35E300CB51D4 /* BNRItemsViewController.m */,
+				263EF7B91E73846700E1681C /* BNRItemCell.h */,
+				263EF7BA1E73846700E1681C /* BNRItemCell.m */,
+				263EF7BB1E73846700E1681C /* BNRItemCell.xib */,
+				260F1C221E747A9C00133FA9 /* BNRImageViewController.h */,
+				260F1C231E747A9C00133FA9 /* BNRImageViewController.m */,
 				26BA9FC91D0D32F700CB51D4 /* Main.storyboard */,
 				26BA9FCC1D0D32F700CB51D4 /* Assets.xcassets */,
 				26BA9FCE1D0D32F700CB51D4 /* LaunchScreen.storyboard */,
@@ -219,6 +232,7 @@
 				26BA9FCD1D0D32F700CB51D4 /* Assets.xcassets in Resources */,
 				26BA9FCB1D0D32F700CB51D4 /* Main.storyboard in Resources */,
 				2690D7881D10F7D500CEA320 /* BNRDetailsViewController.xib in Resources */,
+				263EF7BD1E73846700E1681C /* BNRItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +251,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				26BA9FED1D0D3BCC00CB51D4 /* BNRItemStore.m in Sources */,
+				263EF7BC1E73846700E1681C /* BNRItemCell.m in Sources */,
+				260F1C241E747A9C00133FA9 /* BNRImageViewController.m in Sources */,
 				26BA9FC51D0D32F700CB51D4 /* AppDelegate.m in Sources */,
 				26EF95511D120FE90035BF97 /* BNRImageStore.m in Sources */,
 				2690D7861D10E2EA00CEA320 /* BNRDetailsViewController.m in Sources */,

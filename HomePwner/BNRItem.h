@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface BNRItem : NSObject <NSCoding>
 {
@@ -17,6 +18,7 @@
 }
 
 @property (nonatomic, copy) NSString *itemKey;
+@property (nonatomic, strong) UIImage *thumbnail;
 
 + (instancetype)randomItem;
 
@@ -37,5 +39,7 @@
 - (int)valueInDollars;
 
 - (NSDate *)dateCreated;
+
+- (void)setThumbnailFromImage:(UIImage *)image;
 
 @end

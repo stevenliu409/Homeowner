@@ -9,9 +9,12 @@
 #import "BNRItemsViewController.h"
 #import "BNRItem.h"
 #import "BNRItemStore.h"
+#import "BNRImageStore.h"
+#import "BNRImageViewController.h"
 #import "BNRDetailsViewController.h"
+#import "BNRItemCell.h"
 
-@interface BNRItemsViewController()
+@interface BNRItemsViewController() <UIPopoverPresentationControllerDelegate>
 
 @end
 
@@ -47,31 +50,55 @@
 {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[UITableViewCell class]
-           forCellReuseIdentifier:@"UITableViewCell"];
-    
+    UINib *nib = [UINib nibWithNibName:@"BNRItemCell" bundle:[NSBundle mainBundle]];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"BNRItemCell"];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+    BNRItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BNRItemCell" forIndexPath:indexPath];
     
     NSArray *itemArray = [[BNRItemStore sharedStore] allItems];
+   
+    BNRItem *item = itemArray[indexPath.row];
     
-    cell.textLabel.text = [[itemArray objectAtIndex:indexPath.row] description];
+    cell.nameLabel.text = item.itemName;
+    cell.serialNumberLabel.text = item.serialNumber;
+    cell.valueLabel.text = [NSString stringWithFormat:@"%d", item.valueInDollars];
+    cell.thumbnailView.image = item.thumbnail;
+    __weak BNRItemCell *weakCell = cell;
+    cell.actionBlock = ^{
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
+        {
+            BNRItemCell *strongCell = weakCell;
+            UIImage *img = [[BNRImageStore sharedStore] imageForKey:item.itemKey];
+            
+            if (!img)
+            {
+                return;
+            }
+
+            BNRImageViewController *ivc = [[BNRImageViewController alloc] init];
+            ivc.image = img;
+            ivc.preferredContentSize = CGSizeMake(600, 600);
+            ivc.modalPresentationStyle = UIModalPresentationPopover;
+            [self presentViewController:ivc animated:YES completion:nil];
+            
+            UIPopoverPresentationController *popoverController = [ivc popoverPresentationController];
+            popoverController.delegate = self;
+            popoverController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+            popoverController.sourceRect = strongCell.thumbnailView.bounds;
+            popoverController.sourceView = strongCell.thumbnailView;
+        }
+    };
     
     return cell;
-    
 }
 
-- (NSInteger)tableView:(UITableView *)tableView
- numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [[[BNRItemStore sharedStore] allItems] count];
 }
-
-
 
 - (IBAction)addNewItem:(id)sender
 {
@@ -90,9 +117,7 @@
 }
 
 
-- (void)tableView:(UITableView *)tableView
-commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-forRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSArray *items = [[BNRItemStore sharedStore] allItems];
@@ -104,16 +129,13 @@ forRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 }
 
 
-- (void)tableView:(UITableView *)tableView
-moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
-      toIndexPath:(NSIndexPath *)destinationIndexPath
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     [[BNRItemStore sharedStore] moveItemAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
 }
 
 
-- (void)tableView:(UITableView *)tableView
-didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BNRDetailsViewController *detailsVC = [[BNRDetailsViewController alloc] initForNewItem:NO];
     NSArray *itemsArray = [[BNRItemStore sharedStore] allItems];

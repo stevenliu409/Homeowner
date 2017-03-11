@@ -57,10 +57,22 @@
         _serialNumber = [aDecoder decodeObjectForKey:@"serialNumber"];
         _dateCreated = [aDecoder decodeObjectForKey:@"dateCreated"];
         _itemKey = [aDecoder decodeObjectForKey:@"itemKey"];
+        _thumbnail = [aDecoder decodeObjectForKey:@"thumbnail"];
         
         _valueInDollars = [aDecoder decodeIntForKey:@"valueInDollars"];
     }
     return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.itemName forKey:@"itemName"];
+    [aCoder encodeObject:self.serialNumber forKey:@"serialNumber"];
+    [aCoder encodeObject:self.dateCreated forKey:@"dateCreated"];
+    [aCoder encodeObject:self.itemKey forKey:@"itemKey"];
+    [aCoder encodeObject:self.thumbnail forKey:@"thumbnail"];
+    
+    [aCoder encodeInt:self.valueInDollars forKey:@"valueInDollars"];
 }
 
 - (instancetype)initWithItemName:(NSString *)name
@@ -144,14 +156,32 @@
     return descriptionString;
 }
 
-
-- (void)encodeWithCoder:(NSCoder *)aCoder
+- (void)setThumbnailFromImage:(UIImage *)image
 {
-    [aCoder encodeObject:self.itemName forKey:@"itemName"];
-    [aCoder encodeObject:self.serialNumber forKey:@"serialNumber"];
-    [aCoder encodeObject:self.dateCreated forKey:@"dateCreated"];
-    [aCoder encodeObject:self.itemKey forKey:@"itemKey"];
+    CGSize originalImageSize = image.size;
     
-    [aCoder encodeInt:self.valueInDollars forKey:@"valueInDollars"];
+    CGRect newRect = CGRectMake(0, 0, 40, 40);
+    
+    float ratio = MAX(newRect.size.width / originalImageSize.width,
+                      newRect.size.height / originalImageSize.height);
+    
+    UIGraphicsBeginImageContextWithOptions(newRect.size, NO, 0.0);
+    
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:newRect
+                                                    cornerRadius:5.0];
+    
+    [path addClip];
+    
+    CGRect projectRect;
+    projectRect.size.width = ratio * originalImageSize.width;
+    projectRect.size.height = ratio * originalImageSize.height;
+    projectRect.origin.x = (newRect.size.width - projectRect.size.width) / 2.0;
+    projectRect.origin.y = (newRect.size.height - projectRect.size.height) / 2.0;
+    
+    [image drawInRect:projectRect];
+    
+    self.thumbnail = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
 }
 @end
