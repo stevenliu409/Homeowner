@@ -64,7 +64,7 @@
     
     cell.nameLabel.text = item.itemName;
     cell.serialNumberLabel.text = item.serialNumber;
-    cell.valueLabel.text = [NSString stringWithFormat:@"%d", item.valueInDollars];
+    cell.valueLabel.attributedText = [self _formatValueLabelWithItem:item];
     cell.thumbnailView.image = item.thumbnail;
     __weak BNRItemCell *weakCell = cell;
     cell.actionBlock = ^{
@@ -145,4 +145,21 @@
     [self.navigationController pushViewController:detailsVC animated:YES];
 }
 
+
+- (NSMutableAttributedString *)_formatValueLabelWithItem:(BNRItem *)item
+{
+    NSString *valueInString = [NSString stringWithFormat:@"%d", item.valueInDollars];
+    NSMutableDictionary *attrs = [[NSMutableDictionary alloc] init];
+    if (item.valueInDollars >= 50)
+    {
+        [attrs setValue:[UIColor greenColor] forKey:NSForegroundColorAttributeName];
+    }
+    else
+    {
+        [attrs setValue:[UIColor redColor] forKey:NSForegroundColorAttributeName];
+    }
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:valueInString attributes:attrs];
+    
+    return str;
+}
 @end
