@@ -11,5 +11,4 @@
 @interface BNRImageViewController : UIViewController
 
 @property (nonatomic, strong) UIImage *image;
-
 @end
